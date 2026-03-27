@@ -1,0 +1,56 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "schema-forge",
+  "main": "worker/index.ts",
+  "compatibility_date": "2025-03-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Static assets served from Vite build output
+  "assets": {
+    "directory": "./dist"
+  },
+
+  // Environment-specific overrides
+  "env": {
+    "staging": {
+      "name": "schema-forge-staging",
+      "vars": {
+        "ENVIRONMENT": "staging"
+      }
+    },
+    "production": {
+      "name": "schema-forge",
+      "vars": {
+        "ENVIRONMENT": "production"
+      }
+    }
+  },
+
+  // Durable Objects for real-time collaboration
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "REVIEW_SESSION",
+        "class_name": "ReviewSession"
+      }
+    ]
+  },
+
+  // KV for schema version storage
+  "kv_namespaces": [
+    {
+      "binding": "SCHEMA_VERSIONS",
+      "id": "",
+      "preview_id": ""
+    }
+  ],
+
+  // D1 database for persistent data
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "schema-forge-db",
+      "database_id": ""
+    }
+  ]
+}
