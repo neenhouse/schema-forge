@@ -10,10 +10,11 @@ function renderWithRouter(ui: React.ReactElement) {
 describe('LandingPage', () => {
   it('renders the hero headline', () => {
     renderWithRouter(<LandingPage />)
-    expect(screen.getByText(/Design schemas visually/i)).toBeDefined()
+    expect(screen.getByText(/Schema management that/i)).toBeDefined()
+    expect(screen.getByText(/doesn't break production/i)).toBeDefined()
   })
 
-  it('renders all feature cards', () => {
+  it('renders all 7 feature cards', () => {
     renderWithRouter(<LandingPage />)
     expect(screen.getByText('Visual Schema Designer')).toBeDefined()
     expect(screen.getByText('Migration Generator')).toBeDefined()
@@ -29,5 +30,18 @@ describe('LandingPage', () => {
     expect(screen.getByText('Free')).toBeDefined()
     expect(screen.getByText('Pro')).toBeDefined()
     expect(screen.getByText('Team')).toBeDefined()
+  })
+
+  it('renders the Get Started CTA', () => {
+    renderWithRouter(<LandingPage />)
+    const ctas = screen.getAllByText('Get Started')
+    expect(ctas.length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('renders the preview schema designer mockup', () => {
+    renderWithRouter(<LandingPage />)
+    expect(screen.getByText('users')).toBeDefined()
+    expect(screen.getByText('orders')).toBeDefined()
+    expect(screen.getByText('products')).toBeDefined()
   })
 })

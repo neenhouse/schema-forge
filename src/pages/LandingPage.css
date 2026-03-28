@@ -9,7 +9,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg-primary);
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   height: var(--header-height);
   display: flex;
@@ -24,10 +25,18 @@
 }
 
 .landing-logo {
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
   text-decoration: none;
+}
+
+.logo-mark {
+  color: var(--brand-500);
+  font-size: 1.4rem;
 }
 
 .landing-nav {
@@ -46,21 +55,47 @@
 
 /* Hero */
 .hero {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-3xl) 0 var(--space-xl);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, var(--brand-glow), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--brand-500);
+  background: var(--brand-bg);
+  border: 1px solid var(--brand-border);
+  margin-bottom: var(--space-lg);
 }
 
 .hero h1 {
   max-width: 800px;
   margin: 0 auto var(--space-lg);
+  position: relative;
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
-  max-width: 600px;
+  font-size: 1.2rem;
+  max-width: 620px;
   margin: 0 auto var(--space-xl);
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .hero-actions {
@@ -71,22 +106,30 @@
 
 /* Buttons */
 .btn {
-  padding: var(--space-sm) var(--space-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px var(--space-lg);
   border-radius: var(--radius-md);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   border: 1px solid transparent;
   transition: all 0.2s;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-primary {
-  background: var(--brand-600);
-  color: #fff;
-  border-color: var(--brand-600);
+  background: var(--brand-500);
+  color: #0a0a0f;
+  border-color: var(--brand-500);
+  font-weight: 600;
 }
 .btn-primary:hover {
-  background: var(--brand-700);
-  border-color: var(--brand-700);
+  background: var(--brand-600);
+  border-color: var(--brand-600);
+  color: #0a0a0f;
+  box-shadow: var(--shadow-amber);
 }
 
 .btn-secondary {
@@ -97,6 +140,99 @@
 .btn-secondary:hover {
   border-color: var(--border-hover);
   background: var(--bg-secondary);
+}
+
+/* Hero preview */
+.hero-preview {
+  padding: 0 0 var(--space-3xl);
+}
+
+.preview-window {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.preview-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px var(--space-md);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.preview-dot.red { background: #ef4444; }
+.preview-dot.yellow { background: #f59e0b; }
+.preview-dot.green { background: #22c55e; }
+
+.preview-title {
+  margin-left: var(--space-sm);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.preview-canvas {
+  position: relative;
+  height: 320px;
+  background: var(--bg-primary);
+  background-image:
+    radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.preview-table {
+  position: absolute;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.preview-table-header {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--brand-500);
+  background: var(--brand-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-table-col {
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-table-col:last-child {
+  border-bottom: none;
+}
+
+.preview-table-col.pk {
+  color: var(--brand-500);
+}
+.preview-table-col.fk {
+  color: var(--info);
+}
+
+.preview-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 /* Features */
@@ -111,7 +247,7 @@
 }
 
 .section-subtitle {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   margin-bottom: var(--space-2xl);
 }
@@ -128,9 +264,10 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  transition: box-shadow 0.2s;
+  transition: all 0.2s;
 }
 .feature-card:hover {
+  border-color: var(--brand-border);
   box-shadow: var(--shadow-md);
 }
 
@@ -138,10 +275,11 @@
   font-size: 1.5rem;
   display: block;
   margin-bottom: var(--space-sm);
+  color: var(--brand-500);
 }
 
 .feature-card h3 {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   margin-bottom: var(--space-xs);
 }
 
@@ -170,14 +308,29 @@
 }
 
 .pricing-card {
+  position: relative;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   text-align: left;
+  background: var(--bg-secondary);
 }
 .pricing-card.featured {
   border-color: var(--brand-500);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-amber);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--brand-500);
+  color: #0a0a0f;
 }
 
 .pricing-card h3 {
@@ -229,7 +382,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: var(--space-2xl) 0;
+    padding: var(--space-2xl) 0 var(--space-lg);
   }
   .hero-actions {
     flex-direction: column;
@@ -237,5 +390,8 @@
   }
   .landing-nav {
     gap: var(--space-md);
+  }
+  .preview-window {
+    display: none;
   }
 }
