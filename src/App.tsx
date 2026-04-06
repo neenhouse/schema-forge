@@ -14,7 +14,7 @@ const TeamReviewPage = lazy(() => import('./pages/TeamReviewPage'))
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+      <Suspense fallback={<div style={{ minHeight: '100dvh' }} />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/app" element={<AppLayout />}>

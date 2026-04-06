@@ -42,6 +42,7 @@ const features = [
 export default function LandingPage() {
   return (
     <div className="landing">
+      <a href="#main-content" className="skip-to-content">Skip to content</a>
       <header className="landing-header">
         <div className="landing-container">
           <a href="/" className="landing-logo">
@@ -56,7 +57,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <section className="hero">
+      <section id="main-content" className="hero">
         <div className="hero-glow" />
         <div className="landing-container">
           <div className="hero-badge">Database schema management, reimagined</div>

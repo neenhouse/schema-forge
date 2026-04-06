@@ -24,6 +24,7 @@ const iconMap: Record<string, string> = {
 export default function AppLayout() {
   return (
     <div className="app-layout">
+      <a href="#main-content" className="skip-to-content">Skip to content</a>
       <aside className="app-sidebar">
         <a href="/" className="sidebar-logo">
           <span className="logo-icon">{'\u2B23'}</span>
@@ -48,7 +49,7 @@ export default function AppLayout() {
           <div className="sidebar-schema-meta">6 tables &middot; 7 relations</div>
         </div>
       </aside>
-      <main className="app-main">
+      <main id="main-content" className="app-main">
         <Outlet />
       </main>
     </div>
