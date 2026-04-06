@@ -60,12 +60,10 @@ export default function LandingPage() {
       <section id="main-content" className="hero">
         <div className="hero-glow" />
         <div className="hero-blueprint" aria-hidden="true">
-          <img
-            src="/hero-og.webp"
-            alt=""
-            loading="eager"
-            className="hero-blueprint-img"
-          />
+          <video autoPlay muted loop playsInline poster="/hero-og.webp" className="hero-blueprint-img">
+            <source src="/hero-og.webm" type="video/webm" />
+            <source src="/hero-og.mp4" type="video/mp4" />
+          </video>
         </div>
         <div className="landing-container">
           <div className="hero-badge">Database schema management, reimagined</div>
