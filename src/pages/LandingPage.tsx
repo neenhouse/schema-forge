@@ -59,6 +59,14 @@ export default function LandingPage() {
 
       <section id="main-content" className="hero">
         <div className="hero-glow" />
+        <div className="hero-blueprint" aria-hidden="true">
+          <img
+            src="/hero-og.webp"
+            alt=""
+            loading="eager"
+            className="hero-blueprint-img"
+          />
+        </div>
         <div className="landing-container">
           <div className="hero-badge">Database schema management, reimagined</div>
           <h1>Schema management that<br />doesn't break production</h1>

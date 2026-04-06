@@ -74,6 +74,69 @@
   pointer-events: none;
 }
 
+/* Blueprint masked reveal */
+.hero-blueprint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-blueprint-img {
+  width: min(860px, 92%);
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.18;
+  filter: saturate(0.3) sepia(0.4) hue-rotate(180deg) brightness(0.9);
+  /* Blueprint grid mask: image shows through a fine grid of horizontal/vertical lines */
+  -webkit-mask-image:
+    repeating-linear-gradient(
+      0deg,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 20px
+    ),
+    radial-gradient(ellipse at 50% 40%, black 25%, transparent 75%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    repeating-linear-gradient(
+      0deg,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 20px
+    ),
+    radial-gradient(ellipse at 50% 40%, black 25%, transparent 75%);
+  mask-composite: intersect;
+}
+
+@supports not (mask-composite: intersect) {
+  /* Fallback: simpler fade mask */
+  .hero-blueprint-img {
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%);
+  }
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
