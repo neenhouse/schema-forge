@@ -18,7 +18,7 @@ export default function RehearsalPage() {
     setOverallStatus('running');
     setTotalDuration(0);
     setCurrentStep(0);
-    setSteps(mockRehearsalResult.steps.map(s => ({ ...s, status: 'pending', duration: undefined })));
+    setSteps(mockRehearsalResult.steps.map((s, i) => ({ ...s, status: i === 0 ? 'running' : 'pending', duration: undefined })));
   }, []);
 
   useEffect(() => {
@@ -44,11 +44,6 @@ export default function RehearsalPage() {
         setCurrentStep(prev => prev + 1);
       }
     }, 600 + Math.random() * 400);
-
-    // Mark current step as running
-    setSteps(prev => prev.map((s, i) =>
-      i === currentStep ? { ...s, status: 'running' } : s
-    ));
 
     return () => clearTimeout(timeout);
   }, [isRunning, currentStep, steps.length]);

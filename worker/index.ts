@@ -33,7 +33,6 @@ async function handleApiRequest(
 
 // Durable Object stub for team review sessions
 export class ReviewSession {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   constructor(private state: DurableObjectState, private env: Env) {}
 
   async fetch(_request: Request): Promise<Response> {
