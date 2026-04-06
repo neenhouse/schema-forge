@@ -68,6 +68,7 @@
   --shadow-amber-lg: 0 0 40px rgba(245, 158, 11, 0.2), 0 0 80px rgba(245, 158, 11, 0.08);
 
   /* ── Typography ── */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
   --font-size-xs: 0.75rem;
@@ -149,16 +150,17 @@ body {
 
 /* ─── Typography ─── */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
   color: var(--text-primary);
   line-height: var(--line-height-tight);
   margin: 0;
   font-weight: 600;
 }
 
-h1 { font-size: var(--font-size-5xl); font-weight: 700; letter-spacing: -0.025em; }
-h2 { font-size: var(--font-size-3xl); font-weight: 600; letter-spacing: -0.015em; }
-h3 { font-size: var(--font-size-2xl); font-weight: 600; }
-h4 { font-size: var(--font-size-xl); font-weight: 500; }
+h1 { font-size: var(--font-size-5xl); font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-size: var(--font-size-3xl); font-weight: 700; letter-spacing: -0.02em; }
+h3 { font-size: var(--font-size-2xl); font-weight: 600; letter-spacing: -0.01em; }
+h4 { font-size: var(--font-size-xl); font-weight: 600; }
 
 p {
   margin: 0;
@@ -208,17 +210,17 @@ input, textarea, select {
 
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
-  border-radius: 3px;
+  background: var(--border);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
